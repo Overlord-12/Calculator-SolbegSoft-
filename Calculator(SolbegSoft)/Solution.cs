@@ -22,13 +22,30 @@ namespace Calculator_SolbegSoft_
             StartProgram();
         }
 
+
         static void StartProgram()
         {
             do
             {
-                char[] list = { '+', '-', '*', '/', 'C', 'E' };         
+                var funcs1 = new List<char>
+                {
+                    {'+'},
+                    {'-'},
+                    {'*'},
+                    {'/' }
+                };
+
+                var funcs = new Dictionary<char, string>
+                {
+                    {'+', "plus"},
+                    {'-', "minus"},
+                    {'*', "multiply"},
+                    {'/', "division"},
+                    {'C', "Clear"},
+                    {'E', "Escape"}
+                };
                 var input = Console.ReadLine().Replace("=", "");
-                char oper = list.First(input.Contains);
+                char oper = funcs.Keys.First(input.Contains);
                 if (oper == 'C' || oper == 'С')
                 {
                     Console.Clear();
@@ -37,7 +54,7 @@ namespace Calculator_SolbegSoft_
                 } 
                   
                 if (oper == 'E' || oper == 'E') break;
-                double[] nums = input.Split(list)
+                double[] nums = input.Split(funcs.Keys.ToArray())
                     .Select(double.Parse)
                     .ToArray();    
                 Console.WriteLine(Calculation(nums[0], nums[1], oper));
@@ -45,7 +62,8 @@ namespace Calculator_SolbegSoft_
             while (true);
              
         }
-       
+        
+
         static double Calculation(double firsNumb,double secondNumb, char oper)
         {
             switch (oper)
@@ -65,5 +83,9 @@ namespace Calculator_SolbegSoft_
              
 
         }
+
+
+
+
     }
 }
