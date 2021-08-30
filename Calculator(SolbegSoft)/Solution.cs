@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Calculator_SolbegSoft_
@@ -27,9 +26,9 @@ namespace Calculator_SolbegSoft_
         {
             do
             {
-                char[] list = { '+', '-', '*', '/', 'C', 'E' };
+                char[] сharList = { '+', '-', '*', '/', 'C', 'E' };
                 var input = Console.ReadLine().Replace("=", "");
-                char oper = list.First(input.Contains);
+                char oper = сharList.First(input.Contains);
                 if (oper == 'C' || oper == 'С')
                 {
                     Console.Clear();
@@ -37,7 +36,7 @@ namespace Calculator_SolbegSoft_
                     continue;
                 }     
                 if (oper == 'E' || oper == 'E') break;
-                double[] nums = input.Split(list.ToArray())
+                double[] nums = input.Split(сharList.ToArray())
                     .Select(double.Parse)
                     .ToArray();    
                 Console.WriteLine(Calculation(nums[0], nums[1], oper));
