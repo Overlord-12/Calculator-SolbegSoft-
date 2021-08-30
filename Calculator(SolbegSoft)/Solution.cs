@@ -7,12 +7,12 @@ namespace Calculator_SolbegSoft_
     {
         static void MainInfo()
         {
-            Console.WriteLine("-- + Операция сложения  \n" +
-                            "-- - Операция вычитания \n" +
-                            "-- * Операция умножения \n" +
-                            "-- / Операция деления   \n" +
-                            "-- Введите С, чтобы очистить консоль    \n" +
-                            "-- Введите E, чтобы выйти из приложения \n");
+            Console.WriteLine("-- + Operation summation \n" +
+                              "-- - Operation substraction \n" +
+                              "-- * Operation multiply \n" +
+                              "-- / Operation division \n" +
+                              "-- Enter С, to clear the console \n" +
+                              "-- Enter E, to escape from app \n");
         }
 
         static void Main(string[] args)
@@ -21,9 +21,8 @@ namespace Calculator_SolbegSoft_
             StartProgram();
         }
 
-
         static void StartProgram()
-        {
+        {  
             do
             {
                 char[] сharList = { '+', '-', '*', '/', 'C', 'E' };
@@ -57,6 +56,11 @@ namespace Calculator_SolbegSoft_
                 case '*':
                     return firsNumb * secondNumb;
                 case '/':
+                    if (firsNumb == 0)
+                    {
+                        Console.WriteLine("На ноль делить нельзя");
+                        return 0;
+                    }
                     return firsNumb / secondNumb;
                 default:
                     Console.WriteLine("Ошибка");
