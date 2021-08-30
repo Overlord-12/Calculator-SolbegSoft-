@@ -27,34 +27,17 @@ namespace Calculator_SolbegSoft_
         {
             do
             {
-                var funcs1 = new List<char>
-                {
-                    {'+'},
-                    {'-'},
-                    {'*'},
-                    {'/' }
-                };
-
-                var funcs = new Dictionary<char, string>
-                {
-                    {'+', "plus"},
-                    {'-', "minus"},
-                    {'*', "multiply"},
-                    {'/', "division"},
-                    {'C', "Clear"},
-                    {'E', "Escape"}
-                };
+                char[] list = { '+', '-', '*', '/', 'C', 'E' };
                 var input = Console.ReadLine().Replace("=", "");
-                char oper = funcs.Keys.First(input.Contains);
+                char oper = list.First(input.Contains);
                 if (oper == 'C' || oper == 'С')
                 {
                     Console.Clear();
                     MainInfo();
                     continue;
-                } 
-                  
+                }     
                 if (oper == 'E' || oper == 'E') break;
-                double[] nums = input.Split(funcs.Keys.ToArray())
+                double[] nums = input.Split(list.ToArray())
                     .Select(double.Parse)
                     .ToArray();    
                 Console.WriteLine(Calculation(nums[0], nums[1], oper));
