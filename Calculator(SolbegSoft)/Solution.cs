@@ -5,6 +5,8 @@ namespace Calculator_SolbegSoft_
 {
     class Solution
     {
+
+       public static double result = 0;
         static void MainInfo()
         {
             Console.WriteLine("-- + Operation summation \n" +
@@ -22,29 +24,41 @@ namespace Calculator_SolbegSoft_
         }
 
         static void StartProgram()
-        {  
+        {
+            var input = "";
             do
             {
-                char[] сharList = { '+', '-', '*', '/', 'C', 'E' };
-                var input = Console.ReadLine().Replace("=", "");
-                char oper = сharList.First(input.Contains);
-                if (oper == 'C' || oper == 'С')
+                try
                 {
-                    Console.Clear();
-                    MainInfo();
-                    continue;
-                }     
-                if (oper == 'E' || oper == 'E') break;
-                double[] nums = input.Split(сharList.ToArray())
-                    .Select(double.Parse)
-                    .ToArray();    
-                Console.WriteLine(Calculation(nums[0], nums[1], oper));
+                    char[] сharList = { '+', '-', '*', '/', 'C', 'E' };
+                    if (result != 0) input = result + Console.ReadLine();
+                    else input = Console.ReadLine();
+                    char oper = сharList.First(input.Contains);
+                    if (oper == 'C' || oper == 'С')
+                    {
+                        Console.Clear();
+                        MainInfo();
+                        result = 0;
+                        continue;
+                    }
+                    if (oper == 'E' || oper == 'E') break;
+                    double[] nums = input.Split(сharList.ToArray())
+                        .Select(double.Parse)
+                        .ToArray();
+
+                    result = Calculation(nums[0], nums[1], oper);
+                    Console.WriteLine(result);
+                }
+                catch(Exception)
+                {
+                    Console.WriteLine("Произошла ошибка, попробуйте снова!");
+                }
+               
             }
             while (true);
              
         }
         
-
         static double Calculation(double firsNumb,double secondNumb, char oper)
         {
             switch (oper)
@@ -66,8 +80,6 @@ namespace Calculator_SolbegSoft_
                     Console.WriteLine("Ошибка");
                     return 0;   
             }
-             
-
         }
 
 
