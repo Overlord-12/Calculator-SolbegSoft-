@@ -7,6 +7,7 @@ namespace Calculator_SolbegSoft_
     {
 
         public  static double result = 0;
+        static readonly char[] сharList = { '+', '-', '*', '/', 'C', 'E' };
         static void MainInfo()
         {
             Console.WriteLine("-- + Operation summation \n" +
@@ -30,14 +31,13 @@ namespace Calculator_SolbegSoft_
             {
                 try
                 {
-                    char[] сharList = { '+', '-', '*', '/', 'C', 'E' };
+                    
                     string userExample = Console.ReadLine();
                     if (result != 0 && !char.IsDigit(userExample[0])) input = result + userExample;
                     else input = userExample;
                     char oper = сharList.First(input.Contains);
                     if (oper == 'C' || oper == 'С')
                     {
-                        
                         Console.Clear();
                         MainInfo();
                         result = 0;
