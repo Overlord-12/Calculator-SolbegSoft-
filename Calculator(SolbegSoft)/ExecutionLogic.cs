@@ -1,37 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Calculator_SolbegSoft_
 {
-    class Solution
+    class ExecutionLogic
     {
 
-        public  static double result = 0;
-        static readonly char[] сharList = { '+', '-', '*', '/', 'C', 'E' };
-        static void MainInfo()
-        {
+        private static double result = 0;
+        private static readonly char[] сharList = { '+', '-', '*', '/', 'C', 'E' };
+       private static void MainInfo()
+       {
             Console.WriteLine("-- + Operation summation \n" +
                               "-- - Operation substraction \n" +
                               "-- * Operation multiply \n" +
                               "-- / Operation division \n" +
                               "-- Enter С, to clear the console \n" +
                               "-- Enter E, to escape from app \n");
-        }
-
-        static void Main(string[] args)
+       }
+       public static void StartProgram()
         {
             MainInfo();
-            StartProgram();
-        }
-
-        static void StartProgram()
-        {
             var input = "";
             do
             {
                 try
                 {
-                    
+
                     string userExample = Console.ReadLine();
                     if (result != 0 && !char.IsDigit(userExample[0])) input = result + userExample;
                     else input = userExample;
@@ -51,17 +48,17 @@ namespace Calculator_SolbegSoft_
                     result = Calculation(nums[0], nums[1], oper);
                     Console.WriteLine(result);
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     Console.WriteLine("Error, please try again!");
                 }
-               
+
             }
             while (true);
-             
+
         }
-        
-        static double Calculation(double firsNumb,double secondNumb, char oper)
+
+       public static double Calculation(double firsNumb, double secondNumb, char oper)
         {
             switch (oper)
             {
@@ -80,12 +77,9 @@ namespace Calculator_SolbegSoft_
                     return firsNumb / secondNumb;
                 default:
                     Console.WriteLine("Ошибка");
-                    return 0;   
+                    return 0;
             }
         }
-
-
-
 
     }
 }
