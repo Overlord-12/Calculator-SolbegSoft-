@@ -53,7 +53,7 @@ namespace Calculator_SolbegSoft_
                 }
                 catch(Exception)
                 {
-                    Console.WriteLine("Произошла ошибка, попробуйте снова!");
+                    Console.WriteLine("Error, please try again!");
                 }
                
             }
@@ -74,7 +74,7 @@ namespace Calculator_SolbegSoft_
                 case '/':
                     if (firsNumb == 0)
                     {
-                        Console.WriteLine("На ноль делить нельзя");
+                        Console.WriteLine("You can't divide by zero");
                         return 0;
                     }
                     return firsNumb / secondNumb;
