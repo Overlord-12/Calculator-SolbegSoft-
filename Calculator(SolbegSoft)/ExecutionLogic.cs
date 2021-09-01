@@ -28,7 +28,6 @@ namespace Calculator_SolbegSoft_
             {
                 try
                 {
-
                     string userExample = Console.ReadLine();
                     if (result != 0 && !char.IsDigit(userExample[0])) input = result + userExample;
                     else input = userExample;
@@ -52,7 +51,6 @@ namespace Calculator_SolbegSoft_
                 {
                     Console.WriteLine("Error, please try again!");
                 }
-
             }
             while (true);
 
@@ -69,7 +67,7 @@ namespace Calculator_SolbegSoft_
                 case '*':
                     return firsNumb * secondNumb;
                 case '/':
-                    if (firsNumb == 0)
+                    if (secondNumb == 0)
                     {
                         Console.WriteLine("You can't divide by zero");
                         return 0;
